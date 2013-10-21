@@ -53,4 +53,16 @@ class people::nanoxd::dotfiles {
     target  => "${::boxen_srcdir}/dotfiles/.tmux.conf",
     require => Repository["dotfiles"]
   }
+
+  file { "${homedir}/.vimrc":
+    ensure  => link,
+    target  => "${::boxen_srcdir}/dotfiles/.vimrc",
+    require => Repository["dotfiles"]
+  }
+
+  file { "${homedir}/Library/Preferences/com.googlecode.iterm2.plist":
+      ensure  => link,
+      target  => "${::boxen_srcdir}/dotfiles/com.googlecode.iterm2.plist",
+      require => Repository["dotfiles"],
+  }
 }
